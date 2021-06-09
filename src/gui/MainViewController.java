@@ -50,7 +50,7 @@ public class MainViewController implements Initializable {
 		
 	}
 	
-	private synchronized <T> void loadView(String absoluteName, Consumer<T> initialiazingAction) {
+	private synchronized <T> void loadView(String absoluteName, Consumer<T> initializingAction) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			VBox newVBox = loader.load();
@@ -64,7 +64,7 @@ public class MainViewController implements Initializable {
 			mainVBox.getChildren().addAll(newVBox.getChildren());
 			
 			T controller = loader.getController();
-			initialiazingAction.accept(controller);
+			initializingAction.accept(controller);
 		
 		}
 		catch(IOException e) {
